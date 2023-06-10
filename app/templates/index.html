@@ -3,14 +3,43 @@
 {% block app_content %}
     <h1>You're doing it!</h1>
     <br>
-    <table class="table table-hover">
-        <tr>
-            <td>
-                <br>
-                <span id="post1">This is my one and only blog post. Can you add more using a for loop?</span>
-            </td>
-        </tr>
+<!--    <table class="table table-hover">-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <br>-->
+<!--                <span id="post1">This is my one and only blog post. Can you add more using a for loop?</span><br>-->
+<!--                {% for post in posts %}-->
+<!--                    <span id="{{ loop.index0 }}">{{ post.body }}</span><br>-->
+<!--                {% endfor %}-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark bg-success">
+            <tr>
+                <th style="color: green; text-align: center;">User ID</th>
+                <th style="color: green; text-align: center;">Posts</th>
+                <th style="color: green; text-align: center;">Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>
+                    <span id="userid{{ loop.index0 }}">{{ post.user_id }}</span>
+                </td>
+                <td>
+                    <span id="post{{ loop.index0 }}">{{ post.body }}</span>
+                </td>
+                <td>
+                    <span id="language{{ loop.index0 }}">{{ post.language }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
+
+
     <nav aria-label="...">
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
